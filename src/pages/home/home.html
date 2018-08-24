@@ -1,17 +1,43 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>BAC Calculator</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Fluid OZ Consumed</ion-label>
+        <ion-input [(ngModel)]="ouncesConsumed"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Percent Alcohol</ion-label>
+        <ion-input [(ngModel)]="percentAlcohol"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Weight (LBS)</ion-label>
+        <ion-input [(ngModel)]="weightLbs"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label># Hours Drinking</ion-label>
+        <ion-input [(ngModel)]="hours"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button color="secondary" (click)="calculateLocalBac()">Calculate</button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="isSubmitted">
+    <ion-card-content>
+      <ion-item *ngIf="localBAC">
+        <h1>Your BAC is: {{ localBAC.BACfromModel }}</h1>
+        <h2>This is classified as: {{ localBAC.Classification }}</h2>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
+
