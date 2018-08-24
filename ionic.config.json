@@ -1,0 +1,7 @@
+{
+  "name": "bac",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
